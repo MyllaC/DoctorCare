@@ -1,12 +1,13 @@
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 
 :root {
   --primary-color: hsl(170, 100%, 26%);
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
-  --backgroud-header: rgba(220, 233, 226, 1);
+
   font-size: 62.5%; /* 1rem = 10 px devido essa propriedade */
 }
 
@@ -24,7 +25,6 @@ header {
   margin-right: auto; /* centraliza, usa automaticamente os espaços de margem*/
   margin-left: auto;
   margin-top: 4.1rem;
-  background-color: var(--backgroud-header);
 }
 
 h4 {
@@ -45,8 +45,8 @@ p {
   line-height: 150%;
   font-weight: 400;
   color: var(--paragraph);
+
   margin-bottom: 3.2rem;
-  
 }
 
 button {
