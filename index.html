@@ -157,7 +157,12 @@
             </li>
           </ul>
         </div>
-        <button onclick="openMenu()" class="open-menu">
+        <button
+          aria-expanded="false"
+          aria-label="abrir menu"
+          onclick="openMenu()"
+          class="open-menu"
+        >
           <svg
             width="40"
             height="40"
@@ -189,7 +194,12 @@
           </svg>
         </button>
 
-        <button onclick="closeMenu()" class="close-menu">
+        <button
+          aria-expanded="truen"
+          aria-label="fechar menu"
+          onclick="closeMenu()"
+          class="close-menu"
+        >
           <svg
             width="40"
             height="40"

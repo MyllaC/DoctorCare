@@ -30,6 +30,8 @@ body {
   font-size: 1.6rem;
   color: #dce9e2;
   text-align: center;
+
+  overflow: overlay;
 }
 
 .wrapper {
