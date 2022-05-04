@@ -1,3 +1,5 @@
+/* ===== GERAL ===== */
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -8,7 +10,12 @@
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
 
+  --brand-beige: hsl(39, 100%, 97%);
+  --brand-light: hsl(148, 23%, 89%);
+
   font-size: 62.5%; /* 1rem = 10 px devido essa propriedade */
+
+  --nav-height: 7.3rem;
 }
 
 body {
@@ -18,29 +25,47 @@ body {
   text-align: center;
 }
 
-/* HEADER */
-
-header {
+.wrapper {
   width: 37.5rem;
-  margin-right: auto; /* centraliza, usa automaticamente os espaços de margem*/
-  margin-left: auto;
-  margin-top: 4.1rem;
+  margin-inline: auto; /* centraliza, usa automaticamente os espaços de margem*/
+  padding-inline: 2.4rem;
 }
 
-h4 {
+/* ===== HEADER ===== */
+
+header {
+  margin-top: calc(4.1rem + var(--nav-height));
+}
+
+header::before {
+  content: '';
+  width: 100vw; /* 100% do viewport */
+  height: calc(108rem + var(--nav-height));
+  background-color: var(--brand-light);
+
+  display: block;
+
+  position: absolute; /* faz a caixa ficar por cima do conteudo */
+
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+header h4 {
   font-size: 1.4rem;
   color: var(--primary-color);
   margin-bottom: 1.6rem;
 }
 
-h1 {
+header h1 {
   font-size: 3.4rem;
   color: var(--headline);
   line-height: 130%;
   margin-bottom: 2.4rem;
 }
 
-p {
+header p {
   font-size: 1.8rem;
   line-height: 150%;
   font-weight: 400;
@@ -49,7 +74,7 @@ p {
   margin-bottom: 3.2rem;
 }
 
-button {
+header button {
   background: var(--primary-color);
   border: none;
   border-radius: 4rem;
@@ -73,37 +98,57 @@ button {
   margin-left: auto;
 }
 
-img {
-  padding: 0;
-  width: 26.3rem;
-  height: 34.253rem;
-  margin-bottom: 0;
+header img {
+  width: 26.4rem;
+  display: block;
+  margin-inline: auto;
+
+  object-position: 0 2rem;
 }
 
-.box-header {
+.stats {
+  width: 32.7rem;
+  margin-inline: auto;
+  padding-block: 4rem; /*arruma o padding de cima e o de baixo */
+
+  background-color: var(--brand-beige);
+  border: 1px solid var(--brand-light);
+  border-radius: 0.6rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6rem;
+}
+
+.stat h3 {
+  font-size: 4.8rem;
+  color: var(--headline);
+  line-height: 130%;
+
+  margin-bottom: 0.4rem;
+}
+
+.stat p {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+/* ===== NAVIGATION ===== */
+
+nav {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-right: auto;
-  margin-left: auto;
-  background: #fffaf1;
-  margin-top: 0;
-}
-ul {
-  list-style: none;
-  margin-right: auto;
-  margin-left: auto;
-}
+  justify-content: space-between;
 
-.number {
-  font-size: 4.8rem;
-  color: #212529;
-  line-height: 130%;
-}
+  height: var(--nav-height);
 
-.list {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  color: var(--primary-color);
+  position: fixed; /* para qd dar scroll na barra ele fica fixo */
+  top: 0;
+  left: 50%;
+  transform: translateX(
+    -50%
+  ); /* calcula o valor do elemento e desloca 50%, assim ele fica no meio */
 }
