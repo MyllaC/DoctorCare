@@ -95,7 +95,7 @@ section .content p {
   font-size: 1.6rem;
   line-height: 150%;
 
-  color: var(--paragraph)
+  color: var(--paragraph);
 }
 
 /* ===== NAVIGATION ===== */
@@ -362,14 +362,14 @@ body.menu-expanded button path {
 /* ===== ABOUT ===== */
 #about {
   text-align: left;
-  background-color: var(--brand-beige)
+  background-color: var(--brand-beige);
 }
 
 #about header h2 {
-  margin-bottom: 2.4rem 
+  margin-bottom: 2.4rem;
 }
 
 #about content p {
   margin-top: 2.4rem;
-  margin-bottom: 6rem;
+  margin-bottom: 700rem;
 }
