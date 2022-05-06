@@ -7,22 +7,24 @@
 }
 
 :root {
-  --primary-color: hsl(170, 100%, 26%);
+  --hue: 290;
+  --primary-color: hsl(var(--hue), 100%, 26%);
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
 
   --brand-beige: hsl(39, 100%, 97%);
-  --brand-light: hsl(148, 23%, 89%);
+  --brand-light: hsl(calc(var(--hue) - 22), 23%, 89%);
+  --brand-dark: hsl(var(--hue), 100%, 14%);
 
-  --bg-light: hsl(180, 14%, 97%)
+  --bg-light: hsl(180, 14%, 97%);
 
-  font-size: 62.5%; /* 1rem = 10 px devido essa propriedade */
+  font-size: 62.5%; /* 1rem = 10px */
 
-  --nav-height: 7.3rem;
+  --nav-height: 7.2rem;
 }
 
-
 html {
+  /* chrome://flags/#smooth-scrolling */
   scroll-behavior: smooth;
 }
 
@@ -35,7 +37,7 @@ body {
 body {
   font-family: 'DM Sans';
   font-size: 1.6rem;
-  color: #dce9e2;
+
   text-align: center;
 
   overflow: overlay;
@@ -45,7 +47,7 @@ body {
 
 .wrapper {
   width: 37.5rem;
-  margin-inline: auto; /* centraliza, usa automaticamente os espaços de margem*/
+  margin-inline: auto;
   padding-inline: 2.4rem;
 }
 
@@ -55,7 +57,6 @@ ul {
 
 img {
   max-width: 100%;
-  min-width: 100%;
 }
 
 section {
@@ -66,27 +67,26 @@ section header h4 {
   font-size: 1.4rem;
   font-weight: 700;
   line-height: 150%;
+  letter-spacing: 0.08rem;
   color: var(--primary-color);
-  
+
   text-transform: uppercase;
 
   margin-bottom: 1.6rem;
 }
-
 
 section header h2 {
   font-size: 3rem;
   line-height: 3.9rem;
 
   color: var(--headline);
-
-  
 }
 
 section header h1 {
   font-size: 3.4rem;
   color: var(--headline);
   line-height: 130%;
+
   margin-bottom: 2.4rem;
 }
 
@@ -96,6 +96,67 @@ section .content p {
   line-height: 150%;
 
   color: var(--paragraph);
+}
+
+.button {
+  background: var(--primary-color);
+
+  border: none;
+  border-radius: 4rem;
+
+  margin-bottom: 6rem;
+
+  padding: 1.6rem 3.2rem;
+  width: fit-content;
+
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+
+  text-decoration: none;
+
+  transition: background 200ms;
+}
+
+.button:hover {
+  background-color: var(--brand-dark);
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2rem;
+}
+
+/* ===== CUSTOM COLORS ===== */
+#services .card circle {
+  fill: var(--brand-light);
+}
+
+#navigation .logo path[fill*='#00856F'],
+#backToTopButton circle {
+  fill: var(--primary-color);
+}
+
+button.open-menu path[stroke*='#00856F'],
+#contact li path {
+  stroke: var(--primary-color);
+}
+
+body.menu-expanded #navigation .logo path,
+#navigation.scroll .logo path {
+  fill: white;
+}
+
+#navigation.scroll button.open-menu path[stroke*='#00856F'] {
+  stroke: white;
 }
 
 /* ===== NAVIGATION ===== */
@@ -120,14 +181,6 @@ nav .wrapper {
 
 nav.scroll {
   background: var(--primary-color);
-}
-
-nav.scroll .logo path {
-  fill: white;
-}
-
-nav.scroll button path {
-  stroke: white;
 }
 
 nav button {
@@ -176,7 +229,7 @@ body.menu-expanded .menu {
   transition: transform 300ms;
   transform: translateY(0%);
 }
-  
+
 .menu ul:nth-child(1) {
   display: flex;
   flex-direction: column;
@@ -212,11 +265,11 @@ body.menu-expanded .menu {
   margin-bottom: 8rem;
 }
 
-.social-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3.2rem;
+.menu .button:hover {
+  background-color: var(--primary-color);
+  color: white;
+
+  filter: brightness(1.5);
 }
 
 body.menu-expanded .logo,
@@ -254,10 +307,6 @@ body.menu-expanded button path {
   z-index: -1;
 }
 
-
-
-
-
 #home p {
   font-size: 1.8rem;
   line-height: 150%;
@@ -267,28 +316,8 @@ body.menu-expanded button path {
   margin-bottom: 3.2rem;
 }
 
-#home button {
-  background: var(--primary-color);
-  border: none;
-  border-radius: 4rem;
-
-  margin-bottom: 6rem;
-
-  height: 6.2rem;
-  width: 26.3rem;
-
-  color: white;
-  text-transform: uppercase;
-  font-size: 1.4rem;
-  font-weight: 700;
-
-  display: flex; /* arruma os elementos de dentro da caixa button */
-  align-items: center;
-  justify-content: center;
-  gap: 1.6rem;
-
-  margin-right: auto;
-  margin-left: auto;
+#home .button {
+  margin-inline: auto;
 }
 
 #home img {
@@ -329,11 +358,10 @@ body.menu-expanded button path {
   line-height: 150%;
 }
 
-
 /* ===== SERVICES ===== */
 
 #services header h2 {
-  margin-bottom: 6 rem;
+  margin-bottom: 6rem;
 }
 
 #services .cards {
@@ -350,14 +378,11 @@ body.menu-expanded button path {
 
   border: 1px solid var(--brand-light);
   border-radius: 0.6rem;
-
 }
 
 #services .card h3 {
   margin-block: 1.6rem;
-  color: rgba(33, 37, 41, 1);
 }
-
 
 /* ===== ABOUT ===== */
 #about {
@@ -369,7 +394,87 @@ body.menu-expanded button path {
   margin-bottom: 2.4rem;
 }
 
-#about content p {
+#about .content p {
   margin-top: 2.4rem;
-  margin-bottom: 700rem;
+  margin-bottom: 6rem;
+}
+
+/* ===== CONTACT ===== */
+
+#contact {
+  text-align: left;
+}
+
+#contact header {
+  margin-bottom: 3.2rem;
+}
+
+#contact ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-bottom: 3.2rem;
+}
+
+#contact ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--paragraph);
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+  background-color: var(--primary-color);
+  padding-block: 6rem;
+
+  text-align: left;
+
+  color: white;
+}
+
+footer .logo {
+  display: inline-block;
+  margin-bottom: 2.4rem;
+}
+
+footer .logo svg {
+  width: 23.6rem;
+  height: 3.1rem;
+}
+
+footer .logo path {
+  fill: white;
+}
+
+footer p {
+  color: var(--brand-beige);
+  line-height: 2;
+
+  margin-bottom: 3.2rem;
+}
+
+footer .social-links {
+  justify-content: flex-start;
+}
+
+/* ===== BACK TO TOP ===== */
+
+#backToTopButton {
+  position: fixed;
+  bottom: 1rem;
+  right: 2.5rem;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(100%);
+  transition: 200ms;
+}
+
+#backToTopButton.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
